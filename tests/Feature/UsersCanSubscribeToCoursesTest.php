@@ -31,7 +31,7 @@ class UsersCanSubscribeToCoursesTest extends TestCase
         $user= factory(User::class)->create();
         // Create A Fake Course
         $course= factory(Course::class)->create();
-        // Firstly subscribe a course is not asserting
+        // Firstly set subscribed course assertion false
         $this->assertFalse($user->isSubscribedToCourse($course));  
         // Firstly the current user trying to subscribe a course using following route
         $response = $this->actingAs($user)->post(route('courses.subscribe',$course));
