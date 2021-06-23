@@ -15,7 +15,7 @@ class SubscribedToCourse extends Notification
     public $course;
 
     /**
-     * Create a new notification instance.
+     * Create a new notification instance. for a course related to user
      *
      * @return void
      */
