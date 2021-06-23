@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('courses/{course}/subscribe','SubscribeToCourseController')->name('courses.subscribe');
+Route::resource('courses','CoursesController');                                                             
