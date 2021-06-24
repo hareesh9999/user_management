@@ -68,6 +68,7 @@
                             <th>Sr No.</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Assigned user to course</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -80,6 +81,7 @@
                             <td>{{$i++}}</td>
                             <td>{{$course->title}}</td>
                             <td>{{$course->description}}</td>
+                            <td>@foreach($course->users as $courseusers) @php $username = '';$username .= $courseusers->name.","; @endphp {{ $username }} @endforeach</td>
                             <td><a href="{{ route('assignuser', ['id' => $course->id]) }}" class="btn btn-info">Assign Course</a></td>
                         </tr>
                         @endforeach

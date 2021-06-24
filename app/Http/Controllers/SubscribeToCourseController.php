@@ -24,7 +24,7 @@ class SubscribeToCourseController extends Controller
    public function courseToSubscriber(Request $request)
    {
        //dd($request->users);
-       $user_name  = $request->user_name;
+       $user_name = User::where('id',$request->users)->first()->name;
        if(CourseUser::where(['course_id'=>$request->course_id,'user_id'=>$request->users])->exists()){
            // return redirect()->route('courses.show',$course);
             return redirect()->back()->with(['danger'=>$user_name.' is already subscribed to this course']);
