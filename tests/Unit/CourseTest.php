@@ -9,15 +9,6 @@ use PHPUnit\Framework\TestCase;
 class CourseTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
 
     /**
      * Factory not supported in unit testing.

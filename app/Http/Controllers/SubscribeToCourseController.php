@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Notifications\SubscribedToCourse;
 use App\User;
 use App\Course;
+use Session;
 
 class SubscribeToCourseController extends Controller
 {

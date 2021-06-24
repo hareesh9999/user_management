@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Session;
 use App\Course;
 use App\User;
 
@@ -31,10 +32,10 @@ class UsersCanSubscribeToCoursesTest extends TestCase
         $user= factory(User::class)->create();
         // Create A Fake Course
         $course= factory(Course::class)->create();
-        // Firstly set subscribed course assertion false
-        $this->assertFalse($user->isSubscribedToCourse($course));  
+        // Firstly set subscribed course assertion false    
+        $this->assertFalse($user->isSubscribedToCourse($course)); 
         // Firstly the current user trying to subscribe a course using following route
-        $response = $this->actingAs($user)->post(route('courses.subscribe',$course));
+        $response = $this->actingAs($user)->post(route('courses.subscribe',['course'=>$course]));
         // Then assert the redirection to courses show route
         $response->assertRedirect(route('courses.show',$course));
         // After the delete the oldest records for subscribed users
@@ -48,8 +49,7 @@ class UsersCanSubscribeToCoursesTest extends TestCase
     }
     public function test_it_cannot_subscribe_to_course_again()
     {
-        // Create A fake notification
-        Notification::fake();
+        $this->withoutExceptionHandling();
         // Create A Fake User
         $user= factory(User::class)->create();
         // Create A Fake Course
@@ -58,12 +58,11 @@ class UsersCanSubscribeToCoursesTest extends TestCase
         $user->subscribeToCourse($course);
         // After the delete the oldest records for subscribed users
         $user->refresh();
-        // Then the current user trying to subscribe a course using following route
-        $response = $this->actingAs($user)->post(route('courses.subscribe',$course));
+        // Firstly the current user trying to subscribe a course using following route
+        $response = $this->actingAs($user)->post(route('courses.subscribe',['course'=>$course,'_token' => csrf_token()]));
         // Since its not returning json response and moved to another route so it set to 302 status
         $response->assertStatus(302);  
-        
-       // $response->assertSessionHasErrors();  
+        //$response->assertSessionHasErrors(['user'=>'The Course is already subscribed']);
 
        
     }
