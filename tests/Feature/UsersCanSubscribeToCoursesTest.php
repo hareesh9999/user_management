@@ -16,7 +16,7 @@ use Tests\TestCase;
 class UsersCanSubscribeToCoursesTest extends TestCase
 {
     // Sync with DB migration for rolling back or refreshing data
-    use DatabaseMigrations;
+   // use DatabaseMigrations;
     // To save the records in DB
     use DatabaseTransactions;
     /**
@@ -24,7 +24,7 @@ class UsersCanSubscribeToCoursesTest extends TestCase
      *
      * @return true and false
      */
-    public function test_it_subscribe_to_a_course_and_sends_a_notification()
+    public function test_user_subscribe_to_a_course_and_sends_a_notification()
     {
         // Create A fake notification
         Notification::fake();
@@ -47,7 +47,12 @@ class UsersCanSubscribeToCoursesTest extends TestCase
             return $notification->course->id == $course->id;
         });
     }
-    public function test_it_cannot_subscribe_to_course_again()
+    /**
+     * Enable Subscriber to check whether subscriber is already subscribed to course
+     *
+     * @return true and false
+     */
+    public function test_user_cannot_subscribe_to_course_again()
     {
         $this->withoutExceptionHandling();
         // Create A Fake User

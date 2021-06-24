@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Course;
+use App\User;
 
 class CoursesController extends Controller
 {
@@ -27,6 +29,18 @@ class CoursesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function courseToSubscriber($id)
+    {
+        $course = Course::where('id',$id)->get();
+        $users = User::all();
+        return view('courses.assignment')->with(['course'=>$course,'users'=>$users]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -34,7 +48,13 @@ class CoursesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $courses = Course::all();
+        if(Course::create(['title'=>$request->title,'description'=>$request->description]))
+        {
+            return redirect()->back()->with(['success'=>'Course created successfully','courses'=>$courses]);   
+        } else {
+            return redirect()->back()->with(['danger'=>'Course not created successfully','courses'=>$courses]);
+        }
     }
 
     /**

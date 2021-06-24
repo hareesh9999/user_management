@@ -21,4 +21,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('courses/{course}/subscribe','SubscribeToCourseController')->name('courses.subscribe');
-Route::resource('courses','CoursesController');                                                             
+Route::resource('courses','CoursesController'); 
+Route::get('course/subscribe/{id}','CoursesController@courseToSubscriber')->name('assignuser');
+Route::post('course/subscribetocourse','SubscribeToCourseController@courseToSubscriber')->name('courses.subscribeuser');                                                              

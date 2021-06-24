@@ -29,9 +29,6 @@ public function test_new_users_can_register()
     $response = $this->get('/home');
     //$this->art();
     $response->assertStatus(200);
-    //$response = $this->post('/register',['name'=>'test user','email'=>'test@gmail.com','password' => '654321','password_confirmation' => '654321']);
-    //$response->assertRedirect('/');
-
 }
 
 }
