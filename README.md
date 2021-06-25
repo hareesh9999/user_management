@@ -15,3 +15,11 @@ We have also created test cases for all functionalities.
 - Showing main screen where the course has been listed out and user can subscribe to new course.
 - User can subscribe a course.
 - If user already subscribed then can'nt further subscribe.
+
+
+## Technologies
+
+ - Blade templating engine.
+ - Laravel.
+ - CSS.
+ - Jquery.
