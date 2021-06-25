@@ -74,14 +74,15 @@
                         </thead>
                       
                         <tbody>
-                        @php $i=1;   @endphp
+                        @php $username = ''; $i=1;   @endphp
                         @if(!empty($courses))
                         @foreach($courses as $course)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$course->title}}</td>
                             <td>{{$course->description}}</td>
-                            <td>@foreach($course->users as $courseusers) @php $username = '';$username .= $courseusers->name.","; @endphp {{ $username }} @endforeach</td>
+                            <td>@foreach($course->users as $courseusers) @php $username .= $courseusers->name.", ";
+ @endphp  @endforeach @php $username = preg_replace("/\,$/", "", $username);  @endphp {{ $username }}</td>
                             <td><a href="{{ route('assignuser', ['id' => $course->id]) }}" class="btn btn-info">Assign Course</a></td>
                         </tr>
                         @endforeach

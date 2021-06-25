@@ -31,6 +31,6 @@ class SubscribeToCourseController extends Controller
        }
        $course = Course::where('id',$request->course_id)->first();
        User::find($request->users)->subscribeToCourse($course);
-       return redirect()->route('home');
+       return redirect()->route('home')->with(['success'=>$user_name.' is subscribed to this course']);;
    }
 }
