@@ -10,7 +10,7 @@ use App\Providers\RouteServiceProvider;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
 
 
