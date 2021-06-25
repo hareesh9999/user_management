@@ -5,7 +5,7 @@
 
 Within Course Management an user can view and subscribe to multiple courses.
 
-- If user is already subscribed to a course he can'nt do that again.
+- If user is already subscribed to a course he can't do that again.
 - Same course can be shared between multiple resources.
 
 
@@ -14,7 +14,7 @@ Within Course Management an user can view and subscribe to multiple courses.
 We have also created test cases for all functionalities.
 - Showing main screen where the course has been listed out and user can subscribe to new course.
 - User can subscribe a course.
-- If user already subscribed then can'nt further subscribe.
+- If user already subscribed then can't further subscribe.
 
 
 ## Technologies
